@@ -48,6 +48,7 @@ html {
 .content__list-container {
   height: 298px;
   overflow-y:scroll;
+  position: relative;
 }
 
 .content__list {
@@ -135,8 +136,35 @@ html {
 
 .search-form__checkbox-list {
   display: flex;
-  gap:39px;
+  gap:15px;
 }
+
+.search-form__pseudo-checkbox {
+  position: relative;
+  margin-right: 5px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form__pseudo-checkbox::after {
+  content: "";
+  position: absolute;
+  width: 15px; 
+  height: 15px; 
+  background: white;
+  opacity: 0;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
+  background: #fff;
+}
+
 
 .search-form__label {
   display: flex;
@@ -145,12 +173,17 @@ html {
   width: fit-content;
 }
 
-.search-form__label:focus {
+.search-form__label:focus .button:focus .content__list-item:focus{
   outline: none;
 }
 
 .search-form__label:has(:focus-visible) {
+  outline: solid 1px rgba(255, 255, 255, 1);
+}
 
+.search-form__checkbox-list .search-form__label:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .search-form__textfield {
@@ -160,6 +193,53 @@ html {
   border-right:none;
   border-bottom: solid 1px rgba(255, 255, 255, 1);
   border-top: solid 1px rgba(255, 255, 255, 1);
+  appearance: none;
+  width: 250px;
+  padding-right: 14px;
+}
+
+.button {
+  background-color: transparent;
+  font-family: Fira Sans Condensed;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid #fff;
+  height: 34px;
+}
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: rgba(84, 80, 80, 1);
+}
+
+.search-form__submit-button {
+  width: 194px;
+  align-self: flex-end;
+}
+
+.more-button {
+  width: 100%;
+}
+
+.content__list-item {
+  padding-left:3px;
+  padding-right:3px;
+}
+
+.content__list-item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.content__list-item:has(.content__card-link_current) {
+  background: rgba(84, 80, 80, 1);
 }
 
 h1,
